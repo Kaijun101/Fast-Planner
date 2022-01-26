@@ -95,10 +95,10 @@ void displayTrajWithColor(vector<Eigen::Vector3d> path, double resolution, Eigen
 void drawCmd(const Eigen::Vector3d& pos, const Eigen::Vector3d& vec, const int& id,
              const Eigen::Vector4d& color) {
   visualization_msgs::Marker mk_state;
-  mk_state.header.frame_id = "world";
+  mk_state.header.frame_id = "local_origin";
   mk_state.header.stamp = ros::Time::now();
   mk_state.id = id;
-  mk_state.type = visualization_msgs::Marker::ARROW;
+  mk_state.type = visualization_msgs::Marker::POINTS;
   mk_state.action = visualization_msgs::Marker::ADD;
 
   mk_state.pose.orientation.w = 1.0;

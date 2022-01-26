@@ -66,7 +66,7 @@
     <param name="sdf_map/obstacles_inflation"     value="0.099" /> 
     <param name="sdf_map/local_bound_inflate"    value="0.0"/>
     <param name="sdf_map/local_map_margin" value="50"/>
-    <param name="sdf_map/ground_height"        value="-1.0"/>
+    <param name="sdf_map/ground_height"        value="0.0"/>
     <!-- camera parameter -->
     <param name="sdf_map/cx" value="$(arg cx)"/>
     <param name="sdf_map/cy" value="$(arg cy)"/>
@@ -95,7 +95,7 @@
     <param name="sdf_map/show_occ_time"  value="false"/>
     <param name="sdf_map/show_esdf_time" value="false"/>
     <param name="sdf_map/pose_type"     value="1"/>  
-    <param name="sdf_map/frame_id"      value="world"/>
+    <param name="sdf_map/frame_id"      value="local_origin"/>
 
   <!-- planner manager -->
     <param name="manager/max_vel" value="$(arg max_vel)" type="double"/>
@@ -103,7 +103,7 @@
     <param name="manager/max_jerk" value="4" type="double"/>
     <param name="manager/dynamic_environment" value="0" type="int"/>
     <param name="manager/local_segment_length" value="6.0" type="double"/>
-    <param name="manager/clearance_threshold" value="0.2" type="double"/>
+    <param name="manager/clearance_threshold" value="0.3" type="double"/>
     <param name="manager/control_points_distance" value="0.5" type="double"/>
 
     <param name="manager/use_geometric_path" value="false" type="bool"/>
@@ -126,12 +126,12 @@
     <param name="search/check_num" value="5" type="int"/>
 
   <!-- trajectory optimization -->
-    <param name="optimization/lambda1" value="10.0" type="double"/>
-    <param name="optimization/lambda2" value="5.0" type="double"/>
-    <param name="optimization/lambda3" value="0.00001" type="double"/>
-    <param name="optimization/lambda4" value="0.01" type="double"/>
-    <param name="optimization/lambda7" value="100.0" type="double"/>
-    <param name="optimization/dist0" value="0.4" type="double"/>
+    <param name="optimization/lambda1" value="10.0" type="double"/> <!-- smoothness-->
+    <param name="optimization/lambda2" value="20.0" type="double"/> <!-- distance-->
+    <param name="optimization/lambda3" value="0.001" type="double"/> <!-- feasibility-->
+    <param name="optimization/lambda4" value="0.01" type="double"/> <!-- endpoint-->
+    <param name="optimization/lambda7" value="50.0" type="double"/>
+    <param name="optimization/dist0" value="1.0" type="double"/>
     <param name="optimization/max_vel" value="$(arg max_vel)" type="double"/>
     <param name="optimization/max_acc" value="$(arg max_acc)" type="double"/>
 

@@ -1,11 +1,12 @@
 <launch>
   <!-- size of map, change the size in x, y, z according to your application -->
-  <arg name="map_size_x" value="40.0"/>
-  <arg name="map_size_y" value="20.0"/>
-  <arg name="map_size_z" value=" 5.0"/>
+  <arg name="map_size_x" value="25.0"/>
+  <arg name="map_size_y" value="25.0"/>
+  <arg name="map_size_z" value=" 2.0"/>
 
   <!-- topic of your odometry such as VIO or LIO -->
-  <arg name="odom_topic" value="/state_ukf/odom" />
+  <arg name="odom_topic" value="/sparrow/odom" />
+
 
   <!-- main algorithm params -->
   <include file="$(find plan_manage)/launch/kino_algorithm.xml">
@@ -23,7 +24,7 @@
 
     <!-- topic of point cloud measurement, such as from LIDAR  -->
     <!-- don't set camera pose and depth, if you already set this one! -->
-    <arg name="cloud_topic" value="/pcl_render_node/cloud"/>
+    <arg name="cloud_topic" value="/camera/depth/points"/>
 
     <!-- intrinsic params of the depth camera -->
     <arg name="cx" value="321.04638671875"/>
@@ -32,8 +33,8 @@
     <arg name="fy" value="387.229248046875"/>
 
     <!-- maximum velocity and acceleration the drone will reach -->
-    <arg name="max_vel" value="3.0" />
-    <arg name="max_acc" value="2.0" />
+    <arg name="max_vel" value="1.5" />
+    <arg name="max_acc" value="1" />
 
     <!-- 1: use 2D Nav Goal to select goal  -->
     <!-- 2: use global waypoints below  -->
@@ -74,6 +75,7 @@
   </node>
 
   <!-- use simulator -->
+  <!--
   <include file="$(find plan_manage)/launch/simulator.xml">
     <arg name="map_size_x_" value="$(arg map_size_x)"/>
     <arg name="map_size_y_" value="$(arg map_size_y)"/>
@@ -82,6 +84,6 @@
     <arg name="p_num" value="150"/>
 
     <arg name="odometry_topic" value="$(arg odom_topic)" />
-  </include>
+  </include>-->
 
 </launch>
